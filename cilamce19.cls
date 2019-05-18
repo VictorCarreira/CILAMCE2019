@@ -26,9 +26,9 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
 \ProvidesClass{cilamce19}[2019/05/17 v1.1 CILAMCE Abstract Class]
-%%
-%% Pass all options directly to 'article'
-%%
+%
+% Pass all options directly to 'article'
+%
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 %%
@@ -42,6 +42,7 @@
 \RequirePackage{times}
 \RequirePackage{mathptmx}
 \RequirePackage{lipsum}
+\RequirePackage{geometry}
 \linespread{0.92}
 %%
 %% Page size formats / 1in ~ 72pt, 1pt ~ 03515mm
@@ -72,7 +73,8 @@
 \RequirePackage{natbib} % special citing commands
 \setlength{\bibsep}{0pt} % no lines between bibitems
 \setlength{\bibhang}{1em} % indentation of second line in bibitem
-\bibliographystyle{abbrv} % stylefile
+\bibliographystyle{cilamce} % stylefile
+\setcitestyle{author,open={[},close={]}}
 %%
 %% set header and footer
 %%
@@ -80,13 +82,28 @@
 \RequirePackage{graphicx}
 \pagestyle{fancy} % load package
 \fancyhf{} % clear any existing styles
-\fancyhead[R]{\includegraphics[width=1.66in]{clm19.png}} % input logo top right, even and odd side, in margin
+%\fancyhead[R]{\includegraphics[width=1.66in]{clm19.png}} % input logo top right, even and odd side, in margin
+
+%%short title
+\newcommand\@shorttitle{}
+% define \theshorttitle to what is given
+\newcommand{\shorttitle}[1]{\renewcommand\@shorttitle{#1}}
+
+%%header
+
+\fancyhead[L]{{\fontsize{10}{8}\selectfont{%
+			%\vspace{-1pt}
+			\textit{\@shorttitle}
+}}}
+
+
+
 \fancyfoot[R]{{\fontsize{10}{8}\selectfont{%
 \vspace*{-1pt}
 \textit{CILMACE 2019}\\\vspace{0pt}
 \textit{Proceedings of the XL Ibero-Latin-American Congress on Computational Methods in Engineering, ABMEC}\\\vspace{-3pt}
 \textit{Natal/RN, Brazil, November 11-14, 2019.}}}} % footnote
-\renewcommand{\headrulewidth}{0pt} % no line in header
+\renewcommand{\headrulewidth}{0.5pt} % no line in header
 \renewcommand{\footrulewidth}{0.5pt} % add line in footnote
 \pagenumbering{gobble} % define page numbering
 %%
@@ -111,10 +128,15 @@
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
   \sbox\@tempboxa{{\bf\itshape #1} \itshape #2}%
-  \ifdim \wd\@tempboxa >\hsize
+  \ifdim\wd\@tempboxa >\hsize
     {{\bf\itshape #1} \itshape #2\par}
   \else
     \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
   \fi
   \vskip\belowcaptionskip}
 % EOF
+
+
+
+
+
