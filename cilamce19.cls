@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% This is file cph18.cls'  %%
+%% This is file cilmace19.cls'  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% Made by: Victor Carreira
@@ -42,7 +42,15 @@
 \RequirePackage{times}
 \RequirePackage{mathptmx}
 \RequirePackage{lipsum}
+\RequirePackage{graphics,graphicx}
 \RequirePackage{geometry}
+\RequirePackage[dvipsnames,svgnames,x11names]{xcolor}%put colors on headers and footers
+\RequirePackage{amsfonts}
+\RequirePackage{booktabs}
+\RequirePackage{siunitx}
+\RequirePackage{float}
+\RequirePackage{xspace}
+\RequirePackage{indentfirst}
 \linespread{0.92}
 %%
 %% Page size formats / 1in ~ 72pt, 1pt ~ 03515mm
@@ -51,8 +59,8 @@
 \setlength{\oddsidemargin}{1.0in}
 \setlength{\voffset}{-1.0in}
 \setlength{\topmargin}{0.15in}
-\setlength{\headheight}{0.75in}
-\setlength{\headsep}{0.1in}
+\setlength{\headheight}{0.55in}
+\setlength{\headsep}{0.45in}
 \setlength{\textheight}{9.7in}
 \setlength{\paperheight}{11.7in}
 \setlength{\textwidth}{6.27in}
@@ -62,19 +70,18 @@
 %%
 %% some others
 %%
-\setcounter{secnumdepth}{0} % no numbering of sections
-\setlength{\parindent}{0pt} % no indent for new paragraphs
+\setcounter{secnumdepth}{2} % numbering of sections and subsections
+\setlength{\parindent}{22pt} % no indent for new paragraphs
 \setlength{\parskip}{\baselineskip} % skip one line between paragraphs
 \setlength{\partopsep}{0pt} % skip between environments and paragraphs
 \setlength{\topsep}{0pt} % skip between environments and paragraphs
 %%
 %% bibliography
 %%
-\RequirePackage{natbib} % special citing commands
+\RequirePackage[square,numbers]{natbib} % special citing commands
 \setlength{\bibsep}{0pt} % no lines between bibitems
 \setlength{\bibhang}{1em} % indentation of second line in bibitem
-\bibliographystyle{cilamce} % stylefile
-\setcitestyle{author,open={[},close={]}}
+\bibliographystyle{plainnat} % DO NOT MODIFY THIS UNLESS THE CONGRESS RULE CHANGES
 %%
 %% set header and footer
 %%
@@ -82,7 +89,6 @@
 \RequirePackage{graphicx}
 \pagestyle{fancy} % load package
 \fancyhf{} % clear any existing styles
-%\fancyhead[R]{\includegraphics[width=1.66in]{clm19.png}} % input logo top right, even and odd side, in margin
 
 %%short title
 \newcommand\@shorttitle{}
@@ -93,35 +99,38 @@
 
 \fancyhead[L]{{\fontsize{10}{8}\selectfont{%
 			%\vspace{-1pt}
-			\textit{\@shorttitle}
+			\textcolor{Gray}{\textit{\@shorttitle}}
 }}}
 
 
 
 \fancyfoot[R]{{\fontsize{10}{8}\selectfont{%
 \vspace*{-1pt}
-\textit{CILMACE 2019}\\\vspace{0pt}
+\textcolor{Gray}{\textit{CILMACE 2019}\\\vspace{0pt}
 \textit{Proceedings of the XL Ibero-Latin-American Congress on Computational Methods in Engineering, ABMEC}\\\vspace{-3pt}
-\textit{Natal/RN, Brazil, November 11-14, 2019.}}}} % footnote
-\renewcommand{\headrulewidth}{0.5pt} % no line in header
-\renewcommand{\footrulewidth}{0.5pt} % add line in footnote
+\textit{Natal/RN, Brazil, November 11-14, 2019.}}}}} % footnote
+\renewcommand{\headrulewidth}{1.0pt} % add line in header
+\renewcommand{\headrule}{\hbox to\headwidth{\color{LightGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{1.0pt} % add line in footnote
+\renewcommand{\footrule}{\hbox to\headwidth{\color{LightGray}\leaders\hrule height \headrulewidth\hfill}}
+
 \pagenumbering{gobble} % define page numbering
 %%
 %% section headers and paragraphs
 %%
 \renewcommand{\section}{\@startsection{section}%
 {1}% level
-{0pt}% indent
+{1pt}% indent
 {.1ex plus -.1ex}% beforeskip
 {.1ex plus -.1ex}% afterskip
-{\fontsize{11}{11}\selectfont\bf}} % font
+{\fontsize{13}{13}\selectfont\bf}} % font
 %
 \renewcommand{\subsection}{\@startsection{subsection}%
 {2}% level
-{0pt}% indent
+{1pt}% indent
 {.1ex plus -.1ex}% beforeskip
 {.1ex plus -.1ex}% afterskip
-{\fontsize{11}{11}\selectfont\emph}} % font
+{\fontsize{11}{11}\selectfont\bf}} % font
 %%
 %% caption font
 %%
@@ -136,7 +145,9 @@
   \vskip\belowcaptionskip}
 % EOF
 
-
+%Defining personal tex symbols
+\newcommand{\latex}{\LaTeX\xspace}
+\newcommand{\tex}{\TeX\xspace}
 
 
 
