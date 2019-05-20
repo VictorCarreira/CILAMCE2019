@@ -1,7 +1,7 @@
 # CILAMCE2019
 
 <p align="center">
-  <img src="Images/lg_cilamce2019.png" width="4250"/>
+  <img src="Images/lg_cilamce2019.png" width="250"/>
 </p>
 
 ## Objective
