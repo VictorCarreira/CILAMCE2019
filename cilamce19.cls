@@ -51,6 +51,62 @@
 \RequirePackage{float}
 \RequirePackage{xspace}
 \RequirePackage{indentfirst}
+\RequirePackage{multicol}
+\RequirePackage{subfigure}
+\RequirePackage{smartdiagram}
+\RequirePackage{tikz}
+\RequirePackage{amsmath}
+
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+	decorations.pathreplacing,decorations.pathmorphing,shapes,%
+	matrix,shapes.symbols}
+
+
+\tikzset{
+	>=stealth',
+	punktchain/.style={
+		rectangle, 
+		rounded corners, 
+		% fill=black!10,
+		draw=black, very thick,
+		text width=10em, 
+		minimum height=3em, 
+		text centered, 
+		on chain},
+	line/.style={draw, thick, <-},
+	element/.style={
+		tape,
+		top color=white,
+		bottom color=blue!50!black!60!,
+		minimum width=8em,
+		draw=blue!40!black!90, very thick,
+		text width=10em, 
+		minimum height=3.5em, 
+		text centered, 
+		on chain},
+	every join/.style={->, thick,shorten >=1pt},
+	decoration={brace},
+	tuborg/.style={decorate},
+	tubnode/.style={midway, right=2pt},
+}
+
+\tikzset{basic/.style={draw,fill=blue!50!green!20,
+		text badly centered,minimum width=3em}}
+\tikzset{input/.style={basic,circle}}
+\tikzset{weights/.style={basic,rectangle,minimum width=2em}}
+\tikzset{functions/.style={basic,circle,fill=blue!50!green!20}}
+\newcommand{\addsymbol}{\draw[thick] (0.5em,0.5em) -- (0,0.5em) -- 
+	(0,-0.5em) --  (-0.5em,-0.5em)
+	(0em,0.75em) -- (0em,-0.75em)
+	(0.75em,0em) -- (-0.75em,0em);}
+
+\usetikzlibrary{positioning}
+
+\tikzset{basic/.style={draw,fill=blue!20,text width=1em,text badly centered}}
+\tikzset{input/.style={basic,circle}}
+\tikzset{weights/.style={basic,rectangle}}
+\tikzset{functions/.style={basic,circle,fill=blue!10}}
+
 \linespread{0.92}
 %%
 %% Page size formats / 1in ~ 72pt, 1pt ~ 03515mm

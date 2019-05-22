@@ -5,7 +5,7 @@
 
 
 %%This is the short title that will be inside the header 
-\shorttitle{Put your short title in here.}
+\shorttitle{A Synthetic Approach for a Single Rock Detection using SLP.}
  
 \begin{titlepage}
 	
@@ -21,7 +21,7 @@
  \begin{center}
  	\begin{title}
  		\centering
- 		\textbf{INSTRUCTIONS FOR PREPARATION AND SUBMISSION OF FULL-PAPERS FOR PUBLICATION IN THE PROCEEDINGS OF XL CILAMCE AND STARTS CILAMCE19.CLS V1.01}
+ 		\textbf{A Synthetic Approach for a Single Rock Detection using Single Layer Perceptron for Well Logging Data.}
  	\end{title}	
  \end{center}
 
@@ -29,28 +29,28 @@
 
 %Authors and Affiliations
 \noindent
-\textbf{First A. Author}
+\textbf{Victor R. Carreira$^{1}$}
 \\
-\textbf{Second B. Author}
+\textbf{Cosme F. Ponte-Neto$^{1}$}
 \\
-\textit{somebody1@somewhere.com}\\
-\textit{somebody2@somewhere.com}
+\textit{victorcarreira@on.br}\\
+\textit{cosme@on.br}
 \\
-\textbf{Affiliation}
+\textbf{Observat\'orio Nacional$^{1}$}
 \\
-\textit{Address, Zip-Code, State/Province, Country}
+\textit{Gen. Jos\'e Cristino Street, 77, 20921-400, Rio de Janeiro, Brazil}
 \\
-\textbf{Third C. Author}
+\textbf{Rodrigo S. Bijani$^{2}$}
 \\
-\textit{somebody3@elsewhere.com}\\
-\textbf{Affiliation}
+\textit{rodrigobijani@gmail.com}\\
+\textbf{Universidade Federal Fluminense$^{2}$}
 \\
-\textit{Address, Zip-Code, State/Province, Country}
+\textit{Av. Gen. Milton Tavares de Souza, s/n, 24210-346, Niter\'oi, Brazil}
 \\
 
 %Abstract
 \noindent %Abstract should not be indented
-\textbf{Abstract:} This document-template provides detailed instructions for preparing and submitting a paper to the XL Ibero-Latin American Congress on Computational Methods in Engineering (CILAMCE-2019). Please follow these general instructions carefully: (a) type the body of the paper in single column; (b) use no more than 20 A4-size pages (maximum 5 pages for papers at the Research Beginners Mini-symposium), each formatted with 2.5 cm margins on all sides (do not insert page numbers); (c) use 11pt Times New Roman throughout the body of the text, with 13 pt for the title andfirst-level headings (we strongly encourage you to use the pre-defined styles of this template, as they embed all necessary text formatting for the corresponding paragraph type); (d) type up to 250 words in the abstract; (e) always use either single-spaced orexactly 13-pt-spaced lines, with justified alignment; (f) cite references by Name [number],and list them consecutively in the reference list by the order of citationin the text (the list should only include works that are cited in the text); (g) provide good quality figures; (h) define all quantities, variables and symbols as soon as they first appear in the text; (i) equations must be typed either in Math type or MS Equation (or similar); (j) use only SI units. It is strongly recommended that the paper be written in English. Papers in Portuguese, Spanish or Italian may be occasionally accepted, provided that at least the abstract and the slides for oral presentation are in English
+\textbf{Abstract:}   Machine learning approaches the creation of computer programs that have the capability of automatically improve them selves through time. single-layer perceptron (SLP) is the key elementary component in multilayer feed-forward networks used to solve real-world problems. The behavior of a single neuron serves as the simplest prototype model for studying the characteristics of more general non-linear models such as multilayer perceptrons. This work aims to define a methodology that are capable of indicate if a well logging data for a single rock horizons is a linear separable problem. Sedimentary rocks reflects the ancients environments in which they are formed, in which some of have their attention among petroleum industry. Some rocks have special signatures concerning well logging data. Linear discriminator analysis (LDA) is used as a constrain  validation to determine lithotype is separable from others groups of rocks. LDA analysis indicates a recovery data about $62.5\%$ concerning shale lithotype class. In the synthetic log data presented in this work, it is mentionable that SLPs are not able to define the shale dolomite contact. This result depicts that the resistivity should not be considered as a promising classification of lithotype. Additionally, we could observe that the bottom of the shale is not well defined, which indicates a resolution problem to be faced in future investigations.
 
 \noindent %keywords should not be indented
 %Keywords
@@ -63,99 +63,272 @@
 
 %Here your work really starts.
 \section{Introduction}
-   All full-length papers that have been orally presented at the XL CILAMCE will be published in the congress proceedings. It is extremely important that you prepare the digital version of your contribution in strict accordance with the present instructions.After the preparation of your paper you should generate a PDF file for submission. Only PDF files will be accepted by the online submission system.  
+   Artificial neural networks (ANN) are elaborated machine learning algorithm inspired by human brain \citet{Hagan1996}. Therefore an ANN is a mathematical algorithm that simulates tasks performed by a single neuron or a group of neurons. A neuron is the basic unit of an ANN \citet{Nedjah2016}. In a natural neural network, information pass through electrical impulses transmitted by synapses \citet{Krogh2008}.  In literature, several ANNs are proposed to solve problems of different disciplines \citet{Al-Anazi2010,Bruyelle2014,Adibifard2014,Kumar2015}. This work uses a special kind of ANN know as Single Layer Perceptron (SLP). 
+   
+   The specific problem of logging wells, an important step is the identification of top and base layers that may be associated with changes in petrophysical properties \citet{Saljooghi2014}. Algorithms based on derivatives in the log curves do not identify very thin, or noisy layers \citet{Zhang1999}. \citet{Chakravarthy1999} can use the radial function to locate high-definition layer boundaries in induction log data (HDIL). However, \citet{Benaouda1999} can classify lithologic types into partially collapsed wells through the use of the neural network with error propagation and class changes as the analysis proceeds \citet{Poulton2002}. \citet{Gloaguen2017} raises the question of the relative importance of physical properties in well profiling data for neural network decision making.
+   
+   A single Perceptron only solve linear problems. This work aims to define a linear separation methodology for a single problem of shale detections. Shales are important lithotype units. By definition is a sedimentary rock composed by silt and clay minerals that have a detritial origin.  Color variations are important to define the specificity of such rock components (i.e., from dark shale rich in organic matter, gray that indicates a reducing environment in which the rock was deposited, or red-shale indicative of ferric oxide) .They bring information about reductive or oxidize environments. That analysis  could bring important informations concerning petroleum horizons. For oil and gas industry shale could be a generator rock (conventional petroleum system) or a reservoir and a generator rock  in a non-conventional perspective. 
+   
+   
+   In this work, we define the following method for identification of shale horizons. Firstly, we implement a SLP in Fortran-90 framework considering some particular aspects, like two different learning rate calculations could be performed under this program the classical approach defined by \citet{Robbins1951} where the learning rate parameter is time dependent. Another approach is used by \citet{Darken1990}. Where  is defined a mechanism of search and convergence in learning rate calculation. 
 
-\section{Typing instructions}
+\subsection{Synthetic Sedimentary Basin}
 
-The paper must be written preferably in English. Papers in Portuguese, Spanish or Italian may be occasionally accepted, provided that at least the abstract and the slides for oral presentation are in English. The number of non-English contributions should be kept to a minimum, as we encourage the authors to adopt English as the main conference language as much as possible.
+The proposed model for the machine learning tests was based on a schematic geological model proposed by  \citet{Sal2008} for the Solim\~oes Sedimentary Basin, North part of Brazil. This modeling reproduces structures such as Horst, Grabens, normal and reverse faults. Fig. \ref{t1} shows training well data. Four physical data properties were considered: density, gamma-ray, resistivity and velocity. The sample rate for the well data is $0.01$ observation/meter with contamination of $5$\% Gaussian noise.
 
-\subsection{Paper length} 
-The full-paper including figures and tables should not exceed 20 A4-size pages (maximum 5 pages for papers at the Research Beginners Mini-symposium). Please limit your paper by writing concisely, rather than by reducing figures or tables to a size at which symbols/labels would become difficult to read. The final PDF file should not exceed 3 MB.
+\section{Methodology}
+
+In a general overview, the methodology adopted in this work is divided into three main parts. The first generates a synthetic syneclises sedimentary basin in which synthetic wells are drilled. The second part uses well log T$1$  (see Fig. \ref{t1}) to LDA analysis and training the SLP to obtain an optimal distribution of weights. Additionally, the same well is again used to store T$1$ log data into arrays. The last is to use SLP and compare the classified shale patterns for  wells C$1$.
+
+\begin{center}
+%	\begin{tikzpicture}
+%	[node distance=.8cm,
+%	start chain=going below,]
+%	\node[punktchain, join] (investeringer) {Input};
+%	\node[punktchain, join] (intro) {Preprocessing};
+%	\node[punktchain, join] (probf) {Linear Discriminator Analysis - LDA};
+%	\node[punktchain, join] (investeringer) {Perceptron - SLP};
+%	\node[punktchain, join] (investeringer) {Output};
+%	\end{tikzpicture}
+
+\usesmartdiagramlibrary{additions}
+\smartdiagramset{%uniform color list=white!60!black for 6 items,
+	back arrow disabled=true, module minimum width=1.8cm,
+	module minimum height=2cm,
+	module x sep=2.7cm,
+	text width=1.8cm,
+	additions={
+		additional item offset=0.5cm,
+		additional item width=2cm,
+		additional item height=2cm,
+		additional item text width=3cm
+	}
+}
+
+\smartdiagram[flow diagram:horizontal]{Input, Preprocessing,  LDA,  SLP, Output} 
+\end{center}
 
 
+\subsection{Preprocessing}
 
-\subsection{Page format}
-Each A4-size page should be formatted with 2.5 cm margins on all sides. This defines the printable area. Inside this area, the text must be arranged in a single column. Please do not print any border around the text and do not insert page numbers.The general appearance of the paper should look like this document.
-
-
-\subsection{Genreal text specifications}
-The body of the text must be typed using 11pt Times New Roman throughout, as in the present document. This includes also second-level headings (as in Section 2.3 above), figure and table captions. The first page must include the paper title, authors, affiliations, abstract and keywords. The body of the text must begin in the second page.We encourage you to use the pre-defined styles of this template, as they embed all necessary text formatting for the corresponding paragraph type.
-
-
-\textbf{Remark 1: Paper title.} The title should be in boldface type, 13 pt capital letters (all) and justified on the page, and must not exceed three lines. It should be single spaced. Please pay attention to the 18 pt line spacingafter the title and before the first author.
-
-\textbf{Remark 2: Author(s) and affiliation(s).} Type authors names in boldface type, flush left, one per line, including first name, middle initial(s) and last name. Each name or group of names must be followed by the corresponding emails and affiliations, which should be both in italics.
-
-\textbf{Remark 3: Abstract and keywords.} Type Abstract in boldface, flush left, followed by a period. On the same line, type the abstract in regular (plain) format, justified alignment. The abstract should be no longer than 250 words. Please pay attention to the 18 pt line spacing between the authors affiliations and the abstract, as well as between the abstract and the keywords. For the keywords, type the heading Keywords, followed by a colon, in boldface, flush left and type 3 to 5 keywords, separated by commas, with only the first letter of each keyword capitalized.
-
-\textbf{Remark 4: Headings.} First-level headingsmust be typed in sentence letters, 13 pt boldface type, flush left, as in Section 2 above. Use Arabic numbering (if you use this template's styles, the automatic numbering is already assigned to the first-level heading style). Notice the 18 pt line spacing before and after first-level headings. For second-level headings, use sentence letters, 11 pt boldface type, flush left, with Arabic double numbering (if you use this template's styles, the automatic double numbering is already assigned to the second-level heading style). Notice the 13 pt line spacing before and after second-level headings. Do not use third-level headings. Instead, at most, Remarks (or the like) are allowed, as shown here. These shall start with the word Remark (or the like)in boldface italics, followed by a number and title. The text that follows must be in regular (plain) format. Notice the 13 pt line spacing before and after remarks.
-
-\textbf{Remark 5: Body of text.} As said before, the body of the text should be typed in 11pt Times New Roman, using either single-spaced or exactly 13-pt-spaced lines, and justified alignment. Start each paragraph with an indentation of 0.75 cm from the left margin, and allow no space between paragraphs. 
-
-
-\subsection{Equations, symbols and units} 
-Equations must be typed in Math type or MS Equation (or any equivalent equation editor). They must be centered, right-numbered, with numbers enclosed in parentheses and placed flush right. Allow 6 pt line spacing before and after an equation. For example:
+In terms of neural networks a rock is defined as a mathematical function of it physical properties. A shale is defined according to Eq. \ref{shale}.
 
 \begin{eqnarray}
-q =-4 \theta^{2} \frac{T}{c}
-\label{eq1}
+\textbf{S}(\rho, \gamma, \Omega,\upsilon )
+\label{shale}
 \end{eqnarray}
 
-Please pay attention to the punctuation after the equations, as equations are part of the text and must be punctuated accordingly.
+Where $\rho, \gamma, \Omega,\upsilon $ are density ($g/cm^{3}$), gamma-ray ($Ci/g$), resistivity ($Ohm.m$) and velocity ($km/s$). The problem is a four degree space dimension. 
 
-When referring to an equation in the text, write Eq. (\ref{eq1}) (without the quotation marks), except at the beginning of a sentence, where in  Equation (1) should be used (again, without quotation marks). Please describe the notation adopted and be careful as to define all quantities, variables and symbols as soon as they first appear in the text. A nomenclature section is not necessary.
+From a training well T$1$ (\ref{t1}), is formulate two data sets. One composed only by shale and the second with other rocks presents in T$1$ well. Be $\textbf{R}$ a set of $n$ vectors patterns that defines a rock in a fourth degree dimensional space. $\textbf{R} = \left\lbrace \textbf{R}_{i}(\vec{\mu}) \middle| i = 1, 2, 3, 4, \dots, n \right\rbrace $. $\textbf{R}_{1}$ and $\textbf{R}_{2}$ are binary partition ($\textbf{R}_{1}$, $\textbf{R}_{2}$ $\in$ $\textbf{R}$) of each point measurement in well data. 
 
-All data, including those shown in tables and figures, must be reported in SI units. Decimal points rather than commas should always indicate decimals.
+\begin{multicols}{2}
+	\begin{equation}
+	\textbf{$\textbf{R}_{1}$} =
+	\begin{vmatrix} 
+	\xi_{11} & \xi_{12} & \xi_{13} & \xi_{14} \\
+	\xi_{21} & \xi_{22} & \xi_{23} & \xi_{24} \\
+	\xi_{31} & \xi_{32} & \xi_{33} & \xi_{34} \\
+	\vdots   & \vdots   & \vdots   & \vdots   \\
+	\xi_{m1} & \xi_{m2} & \xi_{m3} & \xi_{m4}
+	\end{vmatrix}
+	\nonumber
+	\end{equation}
+	\hspace{100cm}
+	\begin{equation}
+	\textbf{R}_{2}=
+	\begin{vmatrix} 
+	\zeta_{11} & \zeta_{12} & \zeta_{13} & \zeta_{14} \\
+	\zeta_{21} & \zeta_{22} & \zeta_{23} & \zeta_{24} \\
+	\zeta_{31} & \zeta_{32} & \zeta_{33} & \zeta_{34} \\
+	\vdots   & \vdots   & \vdots   & \vdots   \\
+	\zeta_{m1} & \zeta_{m2} & \zeta_{m3} & \zeta_{m4}
+	\end{vmatrix}
+	\nonumber
+	\end{equation}
+\end{multicols}   
+
+A binary partition $\textbf{R}$ ($\textbf{R}_{1}$,$\textbf{R}_{2}$) is a dichotomy if in the group of surface families exists one hyperplane that separates the points of the shale class $\textbf{R}_{1}$ \footnote{$\textbf{R}_{1}$ $\in$ $\textbf{S}$ | $\exists$ $\textbf{S}$($\rho, \gamma, \Omega, \upsilon$) $\in$ $\Re$  } from the majority of points of non-shale class $\textbf{R}_{2}$.
 
 
-\subsection{Figures and tables}
+\subsection{Linear Discriminator Analysis}
 
-Figures and tables should be inserted as close as possible to their mentioning in the text. Enclosed text and symbols must be clearly readable; avoid small symbols thus. Supply good quality pictures and illustrations.Figures and tables and their captions should be centered in the text. Place figure captions below the figures and allow 6 pt line spacing between both, and 13 pt line spacing after the caption (before the adjacent text). Place table title above the table, leaving 13 pt line spacing before the title and 6 pt between the title and the table.
+Linear discriminant analysis introduced by \cite{Cover1965} is a known dimension reduction and classification approach that has received much attention in the statistical literature. As such different versions of classification procedures have been introduced for various applications \citep{Okwonu2012}
 
-\begin{table}[H]
-		\caption{Table made in \tex. To compile this you must have tex-science package on your system.}
-\begin{tabular}{SSSSSSSS} \toprule
-	{$m$} & {$\Re\{\underline{\mathfrak{X}}(m)\}$} & {$-\Im\{\underline{\mathfrak{X}}(m)\}$} & {$\mathfrak{X}(m)$} & {$\frac{\mathfrak{X}(m)}{23}$} & {$A_m$} & {$\varphi(m)\ /\ ^{\circ}$} & {$\varphi_m\ /\ ^{\circ}$} \\ \midrule
-	1  & 16.128 & +8.872 & 16.128 & 1.402 & 1.373 & -146.6 & -137.6 \\
-	2  & 3.442  & -2.509 & 3.442  & 0.299 & 0.343 & 133.2  & 152.4  \\
-	3  & 1.826  & -0.363 & 1.826  & 0.159 & 0.119 & 168.5  & -161.1 \\
-	4  & 0.993  & -0.429 & 0.993  & 0.086 & 0.08  & 25.6   & 90     \\ \midrule
-	5  & 1.29   & +0.099 & 1.29   & 0.112 & 0.097 & -175.6 & -114.7 \\
-	6  & 0.483  & -0.183 & 0.483  & 0.042 & 0.063 & 22.3   & 122.5  \\
-	7  & 0.766  & -0.475 & 0.766  & 0.067 & 0.039 & 141.6  & -122   \\
-	8  & 0.624  & +0.365 & 0.624  & 0.054 & 0.04  & -35.7  & 90     \\ \midrule
-	9  & 0.641  & -0.466 & 0.641  & 0.056 & 0.045 & 133.3  & -106.3 \\
-	10 & 0.45   & +0.421 & 0.45   & 0.039 & 0.034 & -69.4  & 110.9  \\
-	11 & 0.598  & -0.597 & 0.598  & 0.052 & 0.025 & 92.3   & -109.3 \\ \bottomrule
-\end{tabular}
-\label{tab1}
-\end{table}
+If the dichotomy $\textbf{R}$ ($\textbf{R}_{1}$,$\textbf{R}_{2}$) exists there must be an n-dimensional vector $\vec{\omega}$ which can be written as relations described in Eq. \ref{cond1} and Eq. \ref{cond2} as follows.
+
+\begin{eqnarray}
+\vec{\omega}^{T}\textbf{R}(\vec{\mu}) > 0, \mu \in \textbf{R}_{1}
+\label{cond1}
+\end{eqnarray}
+
+\begin{eqnarray}
+\vec{\omega}^{T}\textbf{R}(\vec{\mu}) < 0, \mu \in \textbf{R}_{2}
+\label{cond2}
+\end{eqnarray}
+
+If the relations conceived in Eq. \ref{cond1} and Eq. \ref{cond2} exists a class separator hyperplane that can be defined as Eq. \ref{hiperplane}.
+
+\begin{eqnarray}
+\vec{\omega}^{T} \textbf{R}(\vec{\mu}) = 0
+\label{hiperplane}
+\end{eqnarray} 
+
+Euclidean distances measurements $\delta$ of each point $\in$ $\textbf{R}_{1}$ and $\textbf{R}_{2}$ to the separator hyperplane brings out the information of how much classifiable a shale ($\textbf{R}_{1}$) is from the others groups of rocks ($\textbf{R}_{2}$). The relation of all distance measurements  is decried in Eq. \ref{ISL}. The first parcel is the sum of all point measurements related to $\textbf{R}_{1}$ class. The second parcel is the sum of all point measurements related to $\textbf{R}_{2}$ class.
+
+\begin{eqnarray}
+\Upsilon =\left|\sum_{i=1}^{n}\frac{\delta_{i}}{|\delta_{i}|}\right| + \left|\sum_{j=1}^{m} \frac{\delta_{j}}{|\delta_{j}|}\right| 
+\label{ISL}
+\end{eqnarray}
+\begin{eqnarray}
+i=1,2,...,n \nonumber
+\\
+j=1,2,...,n \nonumber
+\end{eqnarray}
+
+Where $\Upsilon$ is the Linear Separable Index. 
+
+Table 1 shows all percentage $\Upsilon$ values for each lithotype class that are present in well T$1$, Fig.\ref{t1}.
+
+%\tabl{example}{This table shows the result of linear discrimination analysis for all the nine lithotype presents in the training well T1.}
+{
+	\begin{center}
+		
+		\begin{tabular}{|c|c|}
+			\hline
+			\multicolumn{2}{|c|}{Linear Discriminator Analysis ($\Upsilon$)} \\
+			\hline
+			Shale &  62.5 \%\\
+			\hline
+			Dolomite & 62.5\% \\
+			\hline
+			Diabase   & 75\%  \\
+			\hline
+			Conglomerate   & 62.5\%  \\
+			\hline
+			Conglomerate + Basement  1 & 50\%  \\
+			\hline
+			Conglomerate + Basement  2 & 50\%  \\
+			\hline
+			Conglomerate + Basement  3 & 50\%  \\
+			\hline
+			Conglomerate + Basement  4 & 50\%  \\
+			\hline
+			Basement   & 37.5\%  \\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+	\label{tab}
+} 
+
+\subsection{Perceptron - SLP}
+
+The single-layer perceptron (SLP) is basic component in the context of multilayer feed-forward networks used to solve real-world problems. The behavior of a single neurone serves as the simplest prototype model for studying the characteristics of more general non-linear models such as multilayer perceptron \citep{Raudys1998}.
+
+The mathematical model of a single Perceptron is divided in two parts. First is training where the inputs $\left\lbrace \xi_{i}  \middle| i = 1, 2, 3, 4, \dots, n \right\rbrace$ ($\textbf{R}_{1}$ class) are related to $\left\lbrace \omega_{i}  \middle| i = 1, 2, 3, 4, \dots, n \right\rbrace$ (weights) according to the \textit{net} function described in Eq. \ref{net}. 
 
 
-Arabic numerals should be used in figures and tables (e.g., Figure 1, Figure 2, Table 1, Table 2, etc). Refer to them in the text as Table \ref{tab1} and Fig. 1 (no quotation marks), except at the beginning of a sentence, where in Figure 1 should be used (again, no quotation marks).
+\begin{center}
+	\begin{tikzpicture}
+	\node[functions] (center) {};
+	\node[below of=center,font=\scriptsize,text width=4em] {Threshold};
+	\draw[thick] (0.5em,0.5em) -- (0,0.5em) -- (0,-0.5em) -- (-0.5em,-0.5em);
+	\draw (0em,0.75em) -- (0em,-0.75em);
+	\draw (0.75em,0em) -- (-0.75em,0em);
+	\node[right of=center] (right) {};
+	\path[draw,->] (center) -- (right);9
+	\node[functions,left=3em of center] (left) {$\sum$ net};
+	\path[draw,->] (left) -- (center);
+	\node[weights,left=3em of left] (2) {$\omega_{3}$} -- (2) node[input,left of=2] (l2) {$\xi_{3}$};
+	\path[draw,->] (l2) -- (2);
+	\path[draw,->] (2) -- (left);
+	\node[below of=2] (dots) {$\vdots$} -- (dots) node[left of=dots] (ldots) {$\vdots$};
+	\node[weights,below of=dots] (n) {$\omega_{n}$} -- (n) node[input,left of=n] (ln) {$\xi_{n}$};
+	\path[draw,->] (ln) -- (n);
+	\path[draw,->] (n) -- (left);
+	\node[weights,above of=2] (1) {$\omega_{2}$} -- (1) node[input,left of=1] (l1) {$\xi_{2}$};
+	\path[draw,->] (l1) -- (1);
+	\path[draw,->] (1) -- (left);
+	\node[weights,above of=1] (0) {$\omega_{1}$} -- (0) node[input,left of=0] (l0) {$\xi_{1}$};
+	\path[draw,->] (l0) -- (0);
+	\path[draw,->] (0) -- (left);
+	\node[below of=ln,font=\scriptsize] {inputs};
+	\node[below of=n,font=\scriptsize] {weights};
+	\end{tikzpicture}
+\end{center}
 
+\begin{eqnarray}
+\textit{net}=\sum_{i=1}^{n} \xi_{i} \cdot \omega_{i} + \beta_{i}
+\label{net}
+\end{eqnarray}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=2]{Images/fig1.png}
-	\caption{Pressure variation along the nozzle: experimental data}
-	\label{fig1}
+where $\beta_{i}$ is bias\footnote{Bias is a tendency in which is possible to move the separator hyperplane. This work considered $\beta_{i}=0$}. In this part the algorithm output are the news $\omega_{i}$ net.
+
+The second part is the classification where the weights calculated in the previous phase are used togheter with a new set of inputs (classification well C$1$) and an activation function (sign function) Eq.\ref{sign} .
+
+\begin{eqnarray}
+\Theta(net) & = 
+\begin{cases}
++1 ; net > 0 \\
+-1 ; net \leq 0
+\end{cases}
+\label{sign}
+\end{eqnarray}
+
+Perceptron's classification output is described as Eq \ref{percep}.
+
+\begin{equation}
+\textit{S} :=  \Theta  (\sum_{i=1}^{n} \mu_{i} \cdot \omega_{i} + \beta_{i})
+\label{percep}
+\end{equation}
+
+where $\mu_{i}$ are the classification set input (C$1$ well), and $\textbf{S}$ are the classified shale lithotype rock.
+
+\subsection{Results}
+
+This proposed methodology infers the localization of only one type of rock. Shale is the chosen target for his experiment. Distances between shale and hyperplane projection resulted of the LDA analysis is presented in Fig. \ref{LDA}. 
+
+\begin{figure}[ht]
+	\centering % para centralizarmos a figura
+	\includegraphics[scale=0.2]{Images/LDA-folhelho.png} 
+	\caption{Linear discrimination based on euclidean distances $\delta_{i}$. Green circles shows the shales distances relative to the projection of the hyperplane (black line). Red circles represents all 9 lithotype distance present in training well T$1$.}
+	\label{LDA}
 \end{figure}
 
+Linear discriminant analysis shows that training data number $2$, $3$ and $5$ were not correctly separated by LDA analysis. That's indicates that $62.5\%$ of shale class can be identification by Perceptron model. 
 
-When constructing graphs or plots, do not forget to label coordinates and statethe corresponding units. Similarly, label all columns/rows in tables and state corresponding units whenever applicable.
+Fig. \ref{classification} shows results of the perceptron analysis for shale search on C$1$ synthetic data. 
 
-\subsection{Permission}
-You are responsible for making sure that you have the right to publish everything in your paper. If you use material from a copyrighted source, you may need to obtain permission from the copyright holder.
 
-\subsection{References}
+\begin{figure}[ht]
+	\centering % para centralizarmos a figura
+	\includegraphics[scale=0.5]{Images/shaleclass.png} 
+	\caption{Classification for shale analysis. (a) original C$1$ well. (b) Perceptron classification for shale.}
+	\label{classification}
+\end{figure}
 
-References should be cited in the text by Name [number]. For example: In a recent work, \citet{book-example}, \citet{inbook-example} and \citet{article-example}  proposed \dots. Numbers must be Arabic, enclosed in square brackets and used consecutively. References must be listed at the end of the paper, in a separate section entitled References. They must be listed consecutivelyby the order of citation in the text. Type the word References in boldface, 13 pt Times New Roman type from the left margin, leaving 18 pt line spacing before and after. Type the reference list below it, in 11 pt Times New Roman (please do not leave blank spaces between references).See examples below. The list should only include works that are cited in the text. 
+Perceptron shale's classification show that a linear approach don't recognize the bottom layer of shale. Dolomite-shale contact was not identifiable.
+
+\subsection{Conclusion} 
+
+This methodology intent to indicate which rock are eligible for a classification by a linear model such SLP. In a synthetic scenario $\Upsilon$ index indicates that shale and diabase are candidates for classification by a linear feed-forward model (Table 1).
+
+LDA analysis indicates that shale will just recognizable in $62.5\%$ of the cases, based on training data (Fig. \ref{LDA}). This is explained by the physical properties that have been used for defining lithology in the model. Concerning resistivity shale have a broad scale measurements in which could affect directly the shale-dolomite contact.
+
+Perceptron classification have direct connection with LDA analysis. Fig. \ref{classification} shows that perceptron (a linear separator model) could not separate the base contact between dolomite and shale. One possible reason is related to resistivity measurements. Electrical data changes a lot under the presence of water or oil content inside the rock pores. This wide range of values prevented perceptron of finding this rock base contact.
+
 
 \section*{Acknowledgements}
-This section should be positioned right before the reference list. Type Acknowledgements in boldface, 13 pt Times New Roman type from left margin, leaving 18 pt line spacing before and after.
+Thanks to CNPq scientific Brazilian research foundation. 
 
-
+\begin{figure}[H]
+	%\onecolumn
+	\centering % para centralizarmos a figura
+	\includegraphics[scale=0.6]{Images/Pocot1.pdf}
+	\caption{Synthetic Sedimentary well T1 used for training (based on \citet{Sal2008}) }
+	\label{t1}
+\end{figure}
 
   \bibliography{references.bib}
   
